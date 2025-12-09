@@ -11,4 +11,20 @@ class PhoneService_Firebase{
         // .doc(phone.id)
         // .set(phone.toMap());
   }
+
+  static Future<void> deletePhone(String id) async{
+    await FirebaseFirestore.instance
+        .collection('phones')
+        .doc(id)
+        .delete();
+  }
+
+  static Future<List<Phone>> getPhones() async {
+    final QuerySnapshot snapshot = await FirebaseFirestore.instance.collection('phones').get();
+    return snapshot.docs.map((doc){
+      return Phone.fromFirestore(doc);
+    }).toList();
+  }
+
+
 }

@@ -1,0 +1,3 @@
+enum SelectedMode{
+  get, post
+}

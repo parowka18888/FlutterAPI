@@ -1,5 +1,6 @@
-import 'package:api/core/appdata/app_provider.dart';
+import 'package:api/core/viewmodels/app_provider.dart';
 import 'package:api/core/enums/selected_mode.dart';
+import 'package:api/presentation/screens/startPage/firebase/Elements/main_panel/get_firebase.dart';
 import 'package:api/presentation/screens/startPage/firebase/Elements/main_panel/post_firebase.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class _MainPanelFirebase extends State<MainPanelFirebase>{
       child: Stack(
         children: [
           if(mode == SelectedMode.get)
-            Text("nie"),
+            GetFirebase(),
           if(mode == SelectedMode.post)
             PostFirebase()
         ],

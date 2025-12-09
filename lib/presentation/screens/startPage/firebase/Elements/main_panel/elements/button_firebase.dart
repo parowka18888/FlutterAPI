@@ -1,4 +1,4 @@
-import 'package:api/core/appdata/app_provider.dart';
+import 'package:api/core/viewmodels/app_provider.dart';
 import 'package:api/core/enums/selected_mode.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

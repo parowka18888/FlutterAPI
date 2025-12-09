@@ -1,4 +1,4 @@
-import 'package:api/core/appdata/app_provider.dart';
+import 'package:api/core/viewmodels/app_provider.dart';
 import 'package:api/core/network/auth/auth_gate.dart';
 import 'package:api/core/viewmodels/form_controller.dart';
 import 'package:api/presentation/screens/login/login_page.dart';

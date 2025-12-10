@@ -6,7 +6,7 @@ import '../../data/models/Phone.dart';
 
 class AppProvider extends ChangeNotifier{
 
-  SelectedMode selected_mode = SelectedMode.get;
+  SelectedMode selected_mode = SelectedMode.getStandard;
 
   bool isLoading = false;
   List<Phone> phones = [];

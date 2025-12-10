@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../standard/standard_get.dart';
+
 class MainPanelFirebase extends StatefulWidget{
   MainPanelFirebase({super.key, required this.width, required this.height});
 
@@ -32,7 +34,9 @@ class _MainPanelFirebase extends State<MainPanelFirebase>{
           if(mode == SelectedMode.get)
             GetFirebase(),
           if(mode == SelectedMode.post)
-            PostFirebase()
+            PostFirebase(),
+          if(mode == SelectedMode.getStandard)
+            GetStandard()
         ],
       ),
     );

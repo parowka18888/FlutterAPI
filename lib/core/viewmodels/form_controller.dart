@@ -45,6 +45,6 @@ class FormController extends ChangeNotifier{
         const SnackBar(content: Text('Błąd!')),
       );
     }
-    PhoneService_Firebase.savePhone(phone);
+    // PhoneService_Firebase.savePhone(phone);
   }
 }

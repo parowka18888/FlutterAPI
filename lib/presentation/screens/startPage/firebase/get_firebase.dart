@@ -2,7 +2,7 @@ import 'package:api/core/viewmodels/app_provider.dart';
 import 'package:api/data/models/Phone.dart';
 import 'package:api/data/services/PhoneService.dart';
 import 'package:api/data/services/PhoneService_Firebase.dart';
-import 'package:api/presentation/screens/startPage/firebase/Elements/main_panel/elements/table_firestore.dart';
+import 'package:api/presentation/screens/startPage/main_panel/phones_table.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,15 +14,9 @@ class GetFirebase extends StatefulWidget{
 
 class _GetFirebaseState extends State<GetFirebase>{
 
-  // late Future<List<Phone>> phones;
-
-
   @override
   void initState() {
     super.initState();
-
-    // phones = PhoneService.getPhones();
-    // phones = PhoneService_Firebase.getPhones();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<AppProvider>(context, listen: false).loadPhones();
@@ -42,8 +36,7 @@ class _GetFirebaseState extends State<GetFirebase>{
     return Center(
       child: appProvider.isLoading
           ? CircularProgressIndicator()
-          : TableFirestore(
-        phones: appProvider.phones,
+          : PhonesTable(
         width: tableWidth,
         height: tableHeight,
       ),

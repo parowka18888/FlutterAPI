@@ -3,7 +3,7 @@ import 'package:api/data/services/PhoneService.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'firebase/main_panel_firebase.dart';
+import 'main_panel/main_panel.dart';
 import 'side_panel/side_panel_firebase.dart';
 
 class StartPage extends StatefulWidget{
@@ -32,7 +32,7 @@ class _StartPageState extends State<StartPage>{
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SidePanelFirebase(width: sidePanel_Width, height: sidePanel_Height),
-            MainPanelFirebase(width: mainPanel_Width, height: mainPanel_Height,)
+            MainPanel(width: mainPanel_Width, height: mainPanel_Height,)
           ],
         ),
       ),

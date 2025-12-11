@@ -1,0 +1,3 @@
+enum Dbs{
+  firebase, json
+}

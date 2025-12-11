@@ -5,22 +5,39 @@ import 'package:provider/provider.dart';
 import '../../../../core/viewmodels/app_provider.dart';
 import '../../../../data/models/Phone.dart';
 
-class PhonesTable extends StatelessWidget{
-  PhonesTable({super.key, required this.width, required this.height});
-  final double width;
-  final double height;
+class PhonesTable extends StatefulWidget{
+  PhonesTable({super.key, required this.init});
+  final VoidCallback init;
+
+  @override
+  State<PhonesTable> createState() => _PhonesTableState();
+}
+
+class _PhonesTableState extends State<PhonesTable>{
+  getDataCell(Phone phone, String name) {
+    return DataCell(Text(
+        phone.data != null && phone.data!.containsKey(name) ? phone.data![name].toString() :
+        "---"
+    ));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() => widget.init());
+  }
 
   @override
   Widget build(BuildContext context) {
 
     AppProvider appProvider = context.watch<AppProvider>();
 
-    return Container(
-        height: height,
-        width: width,
-        color: Colors.pink,
+    return Center(
+        // height: widget.height,
+        // width:  widget.width,
         child: SingleChildScrollView(
-          child: DataTable(
+          child: appProvider.isLoading ? CircularProgressIndicator() :
+          DataTable(
             columns: [
               DataColumn(label: Expanded(child: Text('ID'))),
               DataColumn(label: Expanded(child: Text('Nazwa'))),
@@ -57,14 +74,6 @@ class PhonesTable extends StatelessWidget{
         )
     );
   }
-
-  getDataCell(Phone phone, String name) {
-    return DataCell(Text(
-        phone.data != null && phone.data!.containsKey(name) ? phone.data![name].toString() :
-        "---"
-    ));
-  }
-
 
 
 }

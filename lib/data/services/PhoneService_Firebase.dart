@@ -28,7 +28,9 @@ class PhoneService_Firebase{
 
   static Future<Phone?> getPhoneByID(String id) async {
     final DocumentSnapshot doc = await FirebaseFirestore.instance.collection('phones').doc(id).get();
+    print("NIE ZNALEZIONO!");
     if(!doc.exists) return null;
+    print("ZNALEZIONO!");
     return Phone.fromFirestore(doc);
   }
 

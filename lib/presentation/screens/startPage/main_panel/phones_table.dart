@@ -1,3 +1,4 @@
+import 'package:api/core/viewmodels/form_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,6 +32,7 @@ class _PhonesTableState extends State<PhonesTable>{
   Widget build(BuildContext context) {
 
     AppProvider appProvider = context.watch<AppProvider>();
+    FormController formController = context.watch<FormController>();
 
     return Center(
         // height: widget.height,
@@ -58,14 +60,27 @@ class _PhonesTableState extends State<PhonesTable>{
                       getDataCell(phone, "capacity"),
                       getDataCell(phone, "year"),
                       DataCell(
-                          ElevatedButton(
-                            onPressed: (){
-                              if(phone.id != null){
-                                appProvider.deletePhone(phone.id!);
-                              }
-                            },
-                            child: Text("Usuń"),
-                          )
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: (){
+                                if(phone.id != null){
+                                  appProvider.deletePhone(phone.id!);
+                                }
+                              },
+                              child: Text("Usuń"),
+                            ),
+                            ElevatedButton(
+                              onPressed: (){
+                                if(phone.id != null){
+                                  formController.editPhone_Prepare(phone, context);
+                                }
+                              },
+                              child: Text("Edytuj"),
+                            ),
+                          ],
+                        )
                       ),
                     ]
                 )

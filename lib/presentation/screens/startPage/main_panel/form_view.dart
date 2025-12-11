@@ -5,15 +5,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/enums/dbs.dart';
 import '../../../../data/models/Phone.dart';
 
-class PostFirebase extends StatefulWidget{
-  PostFirebase({super.key});
+class FormView extends StatefulWidget{
+  FormView({super.key});
   
-  State<PostFirebase> createState() => _PostFirebase();
+  State<FormView> createState() => _FormView();
 }
 
-class _PostFirebase extends State<PostFirebase>{
+class _FormView extends State<FormView>{
 
   final _formKey = GlobalKey<FormState>();
 
@@ -22,10 +23,10 @@ class _PostFirebase extends State<PostFirebase>{
     super.dispose();
   }
 
-  void submit(){
+  void submit(Dbs db){
     if (_formKey.currentState!.validate()) {
       FormController formController = context.read<FormController>();
-      formController.submit(context);
+      formController.submit(context, db);
     }
   }
 
@@ -72,7 +73,14 @@ class _PostFirebase extends State<PostFirebase>{
                   keyboardType: TextInputType.number,
                   validator: PhoneValidators.validateNumber
                 ),
-                ElevatedButton(onPressed: submit, child: Text("Dodaj"))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(onPressed: (){submit(Dbs.json);}, child: Text("Dodaj do JSON")),
+                    ElevatedButton(onPressed: (){submit(Dbs.firebase);}, child: Text("Dodaj do FIREBASE"))
+                  ],
+                )
+
               ],
             ),
           )

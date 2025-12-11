@@ -13,7 +13,7 @@ class Phone{
 
   factory Phone.fromJson(Map<String, dynamic> json){
     return Phone(
-      id: json["id"] as String,
+      id: json["id"] as String?,
       name: json['name'] as String,
       data: json['data'] != null ? Map<String, dynamic>.from(json['data']) : null
     );

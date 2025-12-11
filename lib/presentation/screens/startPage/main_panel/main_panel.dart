@@ -1,6 +1,5 @@
 import 'package:api/core/viewmodels/app_provider.dart';
 import 'package:api/core/enums/selected_mode.dart';
-import 'package:api/presentation/screens/startPage/firebase/post_firebase.dart';
 import 'package:api/presentation/screens/startPage/main_panel/phone_data.dart';
 import 'package:api/presentation/screens/startPage/main_panel/phones_table.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/enums/dbs.dart';
+import 'form_view.dart';
 
 class MainPanel extends StatefulWidget{
   MainPanel({super.key, required this.width, required this.height});
@@ -44,7 +44,7 @@ class _MainPanel extends State<MainPanel>{
               init: (){viewmodel.loadPhoneById("QXVpdsy6h6tx2R1ZGbLL", Dbs.firebase);},
             ),
           if(mode == SelectedMode.post)
-            PostFirebase(),
+            FormView(),
 
           //JSON
           if(mode == SelectedMode.getStandard)

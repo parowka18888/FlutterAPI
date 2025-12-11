@@ -1,3 +1,3 @@
 enum SelectedMode{
-  get, post, getStandard
+  get, getByID, post, getStandard, getStandardID, postStandard
 }

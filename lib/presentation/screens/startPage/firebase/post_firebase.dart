@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../../data/models/Phone.dart';
+import '../../../../data/models/Phone.dart';
 
 class PostFirebase extends StatefulWidget{
   PostFirebase({super.key});

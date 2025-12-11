@@ -10,6 +10,7 @@ class AppProvider extends ChangeNotifier{
 
   bool isLoading = false;
   List<Phone> phones = [];
+  late Phone? phone;
 
   void setSelectedMode(SelectedMode mode){
     selected_mode = mode;
@@ -21,6 +22,14 @@ class AppProvider extends ChangeNotifier{
     notifyListeners();
 
     phones = await PhoneService_Firebase.getPhones();
+    isLoading = false;
+    notifyListeners();
+  }
+
+  Future<void> loadPhoneById(String id) async {
+    isLoading = true;
+    notifyListeners();
+    phone = await PhoneService_Firebase.getPhoneByID(id);
     isLoading = false;
     notifyListeners();
   }

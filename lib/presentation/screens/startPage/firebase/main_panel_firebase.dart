@@ -1,12 +1,12 @@
 import 'package:api/core/viewmodels/app_provider.dart';
 import 'package:api/core/enums/selected_mode.dart';
-import 'package:api/presentation/screens/startPage/firebase/Elements/main_panel/get_firebase.dart';
-import 'package:api/presentation/screens/startPage/firebase/Elements/main_panel/post_firebase.dart';
+import 'package:api/presentation/screens/startPage/firebase/get_firebase.dart';
+import 'package:api/presentation/screens/startPage/firebase/post_firebase.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../standard/standard_get.dart';
+import '../standard/standard_get.dart';
 
 class MainPanelFirebase extends StatefulWidget{
   MainPanelFirebase({super.key, required this.width, required this.height});
@@ -32,6 +32,8 @@ class _MainPanelFirebase extends State<MainPanelFirebase>{
       child: Stack(
         children: [
           if(mode == SelectedMode.get)
+            GetFirebase(),
+          if(mode == SelectedMode.getByID)
             GetFirebase(),
           if(mode == SelectedMode.post)
             PostFirebase(),

@@ -1,5 +1,7 @@
 import 'package:api/core/viewmodels/app_provider.dart';
 import 'package:api/core/enums/selected_mode.dart';
+import 'package:api/data/models/message.dart';
+import 'package:api/data/services/message_service.dart';
 import 'package:api/presentation/screens/startPage/main_panel/phone_data.dart';
 import 'package:api/presentation/screens/startPage/main_panel/phones_table.dart';
 import 'package:flutter/cupertino.dart';
@@ -50,7 +52,10 @@ class _MainPanel extends State<MainPanel>{
           if(mode == SelectedMode.getStandard)
             PhonesTable(
                 key: ValueKey("GetAllJson"),
-                init: (){viewmodel.loadPhones(Dbs.json);}
+                init: (){
+                  viewmodel.loadPhones(Dbs.json);
+                  viewmodel.loadAdditionArrays();
+                }
             ),
           if(mode == SelectedMode.getStandardID)
             PhoneData(

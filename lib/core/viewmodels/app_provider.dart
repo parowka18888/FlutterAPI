@@ -7,6 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 import '../../data/models/Phone.dart';
+import '../../data/models/message.dart';
+import '../../data/services/message_service.dart';
 
 class AppProvider extends ChangeNotifier{
 
@@ -57,6 +59,17 @@ class AppProvider extends ChangeNotifier{
     }
     loadPhones(currentDb);
     notifyListeners();
+  }
+
+  Future<void> loadAdditionArrays() async {
+    List<Message> messages = await MessageService.getMessages();
+    for(final Message message in messages){
+      print("ID: ${message.id}");
+      print("TITLE: ${message.title}");
+      print("CONTENT: ${message.content}");
+      print("USER: ${message.user?.id}, ${message.user?.name}, ${message.user?.email}");
+      print("#########################");
+    }
   }
 
   // void editPhone_Prepare(Phone phone, BuildContext context) {

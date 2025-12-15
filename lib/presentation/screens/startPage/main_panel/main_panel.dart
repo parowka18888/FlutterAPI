@@ -31,7 +31,6 @@ class _MainPanel extends State<MainPanel>{
     return Container(
       height: widget.height,
       width: widget.width,
-      color: Colors.pink,
       child: Stack(
         children: [
           //FIREBASE
@@ -54,13 +53,19 @@ class _MainPanel extends State<MainPanel>{
                 key: ValueKey("GetAllJson"),
                 init: (){
                   viewmodel.loadPhones(Dbs.json);
-                  viewmodel.loadAdditionArrays();
                 }
             ),
           if(mode == SelectedMode.getStandardID)
             PhoneData(
               key: ValueKey("GetIdJson"),
               init: (){viewmodel.loadPhoneById("1", Dbs.json);},),
+          if(mode == SelectedMode.additional)
+            PhonesTable(
+                key: ValueKey("GetAdditional"),
+                init: (){
+                  viewmodel.loadAdditionArrays();
+                }
+            ),
         ],
       ),
     );

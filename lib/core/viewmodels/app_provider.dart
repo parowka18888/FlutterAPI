@@ -1,8 +1,10 @@
 import 'package:api/core/enums/dbs.dart';
 import 'package:api/core/enums/selected_mode.dart';
 import 'package:api/core/viewmodels/form_controller.dart';
+import 'package:api/data/models/character.dart';
 import 'package:api/data/services/PhoneService.dart';
 import 'package:api/data/services/PhoneService_Firebase.dart';
+import 'package:api/data/services/character_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
@@ -62,6 +64,11 @@ class AppProvider extends ChangeNotifier{
   }
 
   Future<void> loadAdditionArrays() async {
+    getMessageData();
+    getCharacterData();
+  }
+
+  Future<void> getMessageData() async {
     List<Message> messages = await MessageService.getMessages();
     for(final Message message in messages){
       print("ID: ${message.id}");
@@ -70,6 +77,27 @@ class AppProvider extends ChangeNotifier{
       print("USER: ${message.user?.id}, ${message.user?.name}, ${message.user?.email}");
       print("#########################");
     }
+  }
+
+  Future<void> getCharacterData() async {
+    print("POBIERANIE WSZYSTKICH:");
+    List<Character> characters = await CharacterService.getCharacters();
+    print(characters);
+    print("POBIERANIE O ID:");
+    Character character = await CharacterService.getCharacterById(1);
+    print(character.id);
+    print("POST:");
+    Character characterPost = Character(id: 5, name: "nameeee", appearance: {
+      "hair": "Brown",
+      "test": "test"
+    });
+    await CharacterService.saveCharacter(characterPost);
+    await CharacterService.deleteCharacter("5");
+    characterPost.name = "new name";
+    await CharacterService.editCharacter(characterPost);
+
+
+
   }
 
   // void editPhone_Prepare(Phone phone, BuildContext context) {

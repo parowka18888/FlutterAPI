@@ -1,6 +1,7 @@
 
 > ⚠️ Testing project for Flutter API
 
+![Screenshot](assets/list.png)
  ### 🛠 Mapping objects (Phone, Message, Character classes)
  2 types - JSON and Firestore
  <pre> 

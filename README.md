@@ -1,5 +1,5 @@
 
-> ⚠️ Testing project for Flutter API
+> ⚠️ Testing project for using an API in Flutter
 
 ![Screenshot](assets/list.png)
  ### 🛠 Mapping objects (Phone, Message, Character classes)

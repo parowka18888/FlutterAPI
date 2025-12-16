@@ -182,3 +182,25 @@ factory Message.fromJson(Map<String, dynamic> json){
         .delete();
   }
 </pre>
+
+### 🛠 Alternative version for printing data
+<pre>
+ child: FutureBuilder(
+                future: phones,
+                builder: (context, snapshot){
+                  if(snapshot.connectionState == ConnectionState.waiting){
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  if(snapshot.hasError){
+                    return Center(child: Text("${snapshot.error}"));
+                  }
+                  final list = snapshot.data!;
+                  return ListView.builder(
+                      itemCount: list.length,
+                      itemBuilder: (context, index){
+                        Phone phone = list[index];
+                        return Text("${phone.name} -- ${phone.id} -- ${phone.data}");
+                  });
+                }
+            ),
+</pre>
